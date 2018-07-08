@@ -7,6 +7,17 @@ class ListItems extends Component {
     this.state = {};
     this.deleteItem = this.deleteItem.bind(this);
   }
+  scrollToBottom = () => {
+    this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+  };
+
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
 
   deleteItem(id) {
     this.props.deleteTodo(id);
@@ -45,15 +56,21 @@ class ListItems extends Component {
             </button>
           </div>
         ))}
+        <div
+          style={{ float: "left", clear: "both" }}
+          ref={el => {
+            this.messagesEnd = el;
+          }}
+        />
       </React.Fragment>
     );
   }
 }
-
+//state
 const mapStateToProps = state => ({
   todos: state.todo.todos
 });
-
+//function
 const mapDispatchToProps = dispatch => ({
   deleteTodo: id => dispatch(deleteTodo(id))
 });

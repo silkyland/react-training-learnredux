@@ -19,6 +19,17 @@ class App extends Component {
 
   componentDidMount() {
     this.props.getTodo();
+    this.pingTodo();
+  }
+
+  pingTodo() {
+    setInterval(() => {
+      this.props.getTodo();
+    }, 2000);
+  }
+
+  componentWillUnmount() {
+    this.pingTodo;
   }
 
   handleCheckboxCheck(index, complete) {
