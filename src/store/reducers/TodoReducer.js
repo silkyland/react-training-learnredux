@@ -1,4 +1,4 @@
-import { SET_TODOS, SET_TODO } from "../actions/todo";
+import { SET_TODOS, SET_TODO, DONE_DELETE } from "../actions/todo";
 import immutable from "immutability-helper";
 const initialState = {
   todos: []

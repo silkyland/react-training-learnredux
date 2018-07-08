@@ -3,6 +3,7 @@ import config from "../../config";
 
 export const SET_TODO = "SET_TODO";
 export const SET_TODOS = "SET_TODOS";
+export const DONE_DELETE = "DONE_DELETE";
 
 export const getTodo = () => async dispatch => {
   let todos = await axios.get(config.server.api + "/todos");
@@ -15,6 +16,17 @@ export const addTodo = message => async dispatch => {
   });
   dispatch(setTodo(todos.data));
 };
+
+export const deleteTodo = id => async dispatch => {
+  let todo = await axios.delete(config.server.api + "/todos/" + id);
+  let todos = await axios.get(config.server.api + "/todos");
+  dispatch(setTodos(todos.data));
+};
+
+const doneDelete = id => ({
+  type: DONE_DELETE,
+  payload: id
+});
 
 const setTodo = data => ({
   type: SET_TODO,

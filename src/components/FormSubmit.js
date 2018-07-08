@@ -31,7 +31,6 @@ class FormSubmit extends Component {
             value={this.state.message}
             onChange={this.handleInputChange}
             style={{ flex: 9, height: 30 }}
-            value={this.props.message}
           />
           <button type="submit" style={{ height: 35, flex: 1 }}>
             <strong>Add to List</strong>
